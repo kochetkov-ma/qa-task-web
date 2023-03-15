@@ -1,0 +1,3 @@
+rootProject.name = 'qa-task-web'
+
+include 'qa_task_card'

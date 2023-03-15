@@ -1,0 +1,20 @@
+subprojects {
+
+    task build(type: Exec) {
+        group 'flutter'
+        description 'Build flutter web application'
+
+        commandLine 'flutter.bat', 'build', 'web', '--web-renderer', 'html', '--release', '--base-href', "/$rootProject.name/$project.name/"
+
+        finalizedBy "copyToDocs"
+    }
+
+    task copyToDocs(type: Copy) {
+        group 'flutter'
+        description 'Copy flutter web application to docs'
+
+        from "$projectDir/build/web"
+        into "$rootDir/docs/$project.name"
+    }
+
+}
